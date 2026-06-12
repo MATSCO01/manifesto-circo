@@ -1,36 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ============ CARILLON INQUIETANTE — OVERLAY ENTRATA ============
-  var carillonAudio = document.getElementById('carillon');
-  var overlay = document.getElementById('overlay');
-
-  if (carillonAudio && overlay) {
-    carillonAudio.volume = 1.0;
-    carillonAudio.loop = true;
-
-    overlay.addEventListener('click', function enterCircus() {
-      // Avvia audio
-      carillonAudio.play().catch(function(err) {
-        console.log('Audio non avviato:', err);
-      });
-
-      // Fade out overlay
-      anime({
-        targets: overlay,
-        opacity: [1, 0],
-        duration: 800,
-        easing: 'easeOutQuad',
-        complete: function() {
-          overlay.style.display = 'none';
-        }
-      });
-
-      // Rimuovi listener
-      overlay.removeEventListener('click', enterCircus);
-    });
-  }
-
-
   // Punto di ancoraggio: la bandierina rossa
   var anchorX = '624px';
   var anchorY = '257px';

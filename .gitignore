@@ -18,3 +18,8 @@ package-lock.json
 
 # File audio pesanti (opzionale)
 audio.mp3
+
+# Directory con repo git interne o spazi nei nomi
+circo/
+poster circo/
+
