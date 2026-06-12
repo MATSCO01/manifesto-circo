@@ -1,5 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+  // ============ AUDIO CONTROLS ============
+  var carillonAudio = document.getElementById('carillon');
+  var audioToggle = document.getElementById('audio-toggle');
+  var audioStarted = false;
+
+  if (carillonAudio && audioToggle) {
+    carillonAudio.volume = 0.7;
+    carillonAudio.loop = true;
+
+    audioToggle.addEventListener('click', function() {
+      if (!audioStarted) {
+        carillonAudio.play().then(function() {
+          audioStarted = true;
+          audioToggle.textContent = '🔊';
+          audioToggle.classList.add('playing');
+        }).catch(function(err) {
+          console.log('Audio non avviato:', err);
+        });
+      } else {
+        if (carillonAudio.paused) {
+          carillonAudio.play();
+          audioToggle.textContent = '🔊';
+          audioToggle.classList.add('playing');
+        } else {
+          carillonAudio.pause();
+          audioToggle.textContent = '🔇';
+          audioToggle.classList.remove('playing');
+        }
+      }
+    });
+  }
+
   // Punto di ancoraggio: la bandierina rossa
   var anchorX = '624px';
   var anchorY = '257px';
